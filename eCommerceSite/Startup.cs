@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using eCommerceSite.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace eCommerceSite
 {
@@ -30,6 +32,14 @@ namespace eCommerceSite
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            string con = 
+                Configuration.GetConnectionString("commercedb");
+
+            services.AddDbContext<CommerceContext>(
+                    //Lambda Expression
+                    options => options.UseSqlServer(con)
+                );
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
