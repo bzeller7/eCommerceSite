@@ -20,6 +20,7 @@ namespace eCommerceSite.Models
         public string Description { get; set; }
 
         [Range(0.0, 1000000.0)]
+        [DataType(DataType.Currency)]
         public double Price { get; set; }
 
         [Required]

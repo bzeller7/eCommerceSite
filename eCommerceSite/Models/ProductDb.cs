@@ -13,5 +13,15 @@ namespace eCommerceSite.Models
             db.SaveChanges();
             return p;
         }
+
+        internal static List<Product> GetProducts(CommerceContext context)
+        {
+            //LINQ Query Syntax
+            return (from p in context.Products
+                    select p).ToList();
+            
+            //LINQ Method Syntax
+            //return context.Products.ToList();
+        }
     }
 }

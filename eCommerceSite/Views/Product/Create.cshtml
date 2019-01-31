@@ -5,6 +5,13 @@
 
 <h1>Create</h1>
 
+@if(ViewData["Message"] != null)
+{
+    <h2 class="text-success text-lg-center">
+        @ViewData["Message"]
+    </h2>
+}
+
 <form asp-action="Create" method="post">
 
     <label asp-for="Name"></label>

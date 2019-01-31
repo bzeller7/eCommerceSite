@@ -20,7 +20,8 @@ namespace eCommerceSite.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<Product> products = ProductDb.GetProducts(context);
+            return View(products);
         }
         public IActionResult Create()
         {
