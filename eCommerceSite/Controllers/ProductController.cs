@@ -9,6 +9,15 @@ namespace eCommerceSite.Controllers
 {
     public class ProductController : Controller
     {
+        //readonly means the constructor can modify the field
+        //but nothing else can
+        private readonly CommerceContext context;
+
+        public ProductController(CommerceContext dbContext)
+        {
+            context = dbContext;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -23,7 +32,8 @@ namespace eCommerceSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                //TODO: Add to database
+                ProductDb.Add(p, context);
+                ViewData["Message"] = $"{p.Name} was added!";
                 return View();
             }
 
