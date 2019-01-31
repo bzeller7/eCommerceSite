@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eCommerceSite.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eCommerceSite.Controllers
@@ -15,6 +16,19 @@ namespace eCommerceSite.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Product p)
+        {
+            if (ModelState.IsValid)
+            {
+                //TODO: Add to database
+                return View();
+            }
+
+            //Show web page with errors
+            return View(p);
         }
     }
 }
