@@ -65,6 +65,7 @@ namespace eCommerceSite
 
             app.UseMvc(routes =>
             {
+                //yourwebsite.com/ControllerName/ActionName/Id
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

@@ -41,5 +41,36 @@ namespace eCommerceSite.Controllers
             //Show web page with errors
             return View(p);
         }
+
+        public IActionResult Edit(int id)
+        {
+            //get the product by id
+            Product p = ProductDb.GetProduct(context, id);
+
+            //show it on the web page
+            return View(p);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product p)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Update(p);
+                context.SaveChanges();
+                ViewData["Message"] = "Product Updated!";
+                //Return same page with message or redirect to
+                //another page
+                return View(p);
+            }
+            //return view with errors
+            return View(p);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            Product p = ProductDb.GetProduct(context, id);
+
+        }
     }
 }
