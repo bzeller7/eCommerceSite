@@ -70,7 +70,21 @@ namespace eCommerceSite.Controllers
         public IActionResult Delete(int id)
         {
             Product p = ProductDb.GetProduct(context, id);
+            return View(p);
+        }
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirm(int id)
+        {
+            //Get product from the database
+            Product p = ProductDb.GetProduct(context, id);
 
+            //Mark the object as deleted
+            context.Products.Remove(p);
+
+            //Send delete query to database
+            context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }
