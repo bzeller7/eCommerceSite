@@ -37,8 +37,8 @@
                 @Html.DisplayFor(m => p.Category)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@p.ProductId">Edit Product</a> |
-                <a asp-action="Delete" asp-route-id="@p.ProductId">Delete product</a>
+                <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@p.ProductId">Edit Product</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@p.ProductId">Delete product</a>
             </td>
         </tr>
         }
