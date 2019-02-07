@@ -37,5 +37,13 @@ namespace eCommerceSite.Controllers
             //returning view, with error messages
             return View(m);
         }
+
+        public IActionResult Login()
+        {
+            //Session test code
+            //HttpContext.Session.Set("Id", 1);
+
+            return View();
+        }
     }
 }

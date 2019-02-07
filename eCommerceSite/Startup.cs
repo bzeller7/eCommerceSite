@@ -31,6 +31,15 @@ namespace eCommerceSite
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
+                //options.Secure = CookieSecurePolicy.Always;
+            });
+
+            //Set up session management
+            services.AddDistributedMemoryCache(); //stores session in memory
+            //configures session options
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(15);
             });
 
             string con = 
@@ -62,6 +71,7 @@ namespace eCommerceSite
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession(); //Use our session middleware
 
             app.UseMvc(routes =>
             {
